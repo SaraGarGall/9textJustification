@@ -12,7 +12,6 @@ let blockOfText = await inquirer.prompt([{
 
 const result = justificationWithSpaces(blockOfText.input);
 
-console.log("Text splitted in an array", result);
-
+console.log("Text splitted in an array:", result);
 
 

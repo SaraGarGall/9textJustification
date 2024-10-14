@@ -1,12 +1,9 @@
-//ESTA MAL. PORQUE LA IDEA ES ESPACIO ENTRE PALABRAS, NO ENTRE CARACTERES.
-//Maybe using .split()
-
 function stringToArray(n){
    let array = n.split(' ');
    return array;
 }
 
-//PROBLEMA: devuelve un string mas corta que el width
+//PROBLEM: The final string is 1 space longer than the width.
 export function justificationWithSpaces(n){
     let width = 30;
     let string = n;
@@ -16,17 +13,22 @@ export function justificationWithSpaces(n){
     console.log("prueba:", prueba);
 
     for(let i = 0; i < text.length; i++){
-        if(string.length <= width){
-            for(let j = 0; j < (text.length - 1); j++){
-                //añadir un espacio despues de cada elemento del array, de cada palabra
+        console.log("dentro del primer for loop. i es:", text[i]);
+        if(string.length < width){
+            for(let j = 0; j < (text.length - 1); j++){ //To not leave spaces after the last word.
+                console.log('dentro del primer for loop. j es:', text[j]);
+                //To add a space after each element of the array, of each word.
                 text[j]=text[j] + " ";
-                string = text.join(' '); //actualizo el string con los cambios en el array de text.
+                string = text.join(' '); //To update the string with the changes on the text array.
                 console.log("text inside 2nd for loop:", text);
-
             }
+        }
+        //To make the first for loop a circular for loop.
+        if (i == (text.length - 1) && string.length < width) { 
+          i = 0;
         }
     }
     string = text.join(' ');
     console.log('string length:', string.length);
-    return string;// Para devolver un string y no un array.
+    return string;// To return a string and not an array.
 }
